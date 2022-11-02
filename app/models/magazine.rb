@@ -3,10 +3,11 @@ class Magazine
   attr_accessor :name, :category
   extend Finder
   @@all = []
+  
   def initialize(name, category)
     @name = name
     @category = category
-    # add the initialized object to a class variable called "all"
+    # add initialized object to class variable "all"
     @@all << self
   end
 
@@ -21,15 +22,11 @@ class Magazine
   end
   
   def contributors
-    # filter from articles the articles{|article|article.magazine.name==@name}
-    # .map{|article|article.author.name}.uniq
+    
     magazine_authors.uniq
   end
   
-  # inherited the 'find_by_name' from module Finder
-  # def self.find_by_name(name)
-  #   Magazine.all.find{|magazine|magazine.name==name}
-  # end
+ 
 
   def article_titles
     magazine_articles.map{|article|article.title}
